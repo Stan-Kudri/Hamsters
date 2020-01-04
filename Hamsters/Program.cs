@@ -23,7 +23,7 @@ namespace Hamsters
                 dictionary[hamster[i]] = 0;
                 Console.WriteLine(hamster[i].ToString());
             }
-            var varietyoffood = Enum.GetNames(typeof(Food)).Length;
+            var itemsfood = (Food[])Enum.GetValues(typeof(Food));
             Random rnd = new Random();            
             foreach (DaysOfTheWeek deytimefood in Enum.GetValues(typeof(DaysOfTheWeek)))
             {
@@ -32,7 +32,7 @@ namespace Hamsters
                 {
                     if (dictionary[hamster[i]] < 2)
                     {
-                        var food = (Food)rnd.Next(varietyoffood);
+                        var food = itemsfood[rnd.Next(0,itemsfood.Length)];
                         Console.WriteLine("Хомяку {0} дали {1}", hamster[i].Name, food.FoodRendering());
                         if ((food == Food.meat) || (food == Food.candy))
                         {

@@ -20,33 +20,33 @@ namespace Hamsters
 
         static void Main(string[] args)
         {
-            var hamster = new Hamsters[2];
-            hamster[0] = new Hamsters("Пупа", 400, 9, Color.pink);
-            hamster[1] = new Hamsters("Трула", 500, 10, Color.white);
+            var hamsters = new Hamsters[2];
+            hamsters[0] = new Hamsters("Пупа", 400, 9, Color.pink);
+            hamsters[1] = new Hamsters("Трула", 500, 10, Color.white);
             /*var dictionary = new Dictionary<Hamsters, int>();*/
             var edibilityCheck = new FoodEdibilityCheck();            
-            for (int i = 0; i < hamster.Length; i++)
+            for (int i = 0; i < hamsters.Length; i++)
             {
-                edibilityCheck.TodayEatUp(hamster[i]);   
-                Console.WriteLine(hamster[i].ToString());
+                edibilityCheck.TodayEatUp(hamsters[i]);   
+                Console.WriteLine(hamsters[i].ToString());
             }            
             foreach (DaysOfTheWeek deytimefood in Enum.GetValues(typeof(DaysOfTheWeek)))
             {
                 Console.WriteLine($"день недели :{deytimefood.WeekRendering()}");
-                foreach (Hamsters hamsters in hamster)
+                foreach (var hamster in hamsters)
                 {
-                    if(edibilityCheck.IsAlive(hamsters))
+                    if(edibilityCheck.IsAlive(hamster))
                     {
                         var food = RandomFood.FoodDays();
-                        Console.WriteLine("Хомяку {0} дали {1}", hamsters.Name, food.ToDisplayString());
+                        Console.WriteLine("Хомяку {0} дали {1}", hamster.Name, food.ToDisplayString());
                         if (IsEdibleFood(food))
                         {
-                            edibilityCheck.TodayHungry(hamsters);
-                            if (edibilityCheck.IsDied(hamsters))
-                                Console.WriteLine($"{hamsters.Name} умер");                            
+                            edibilityCheck.TodayHungry(hamster);
+                            if (edibilityCheck.IsDie(hamster))
+                                Console.WriteLine($"{hamster.Name} умер");                            
                         }
                         else
-                            edibilityCheck.TodayEatUp(hamsters);
+                            edibilityCheck.TodayEatUp(hamster);
                     }
                 }
             }

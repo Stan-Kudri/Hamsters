@@ -26,7 +26,7 @@ namespace Hamsters
             dictionary[hamster]++;
         }
 
-        public bool IsDied(Hamsters hamster)
+        public bool IsDie(Hamsters hamster)
         {
             return dictionary[hamster] == 2;
         }                     

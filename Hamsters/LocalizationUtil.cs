@@ -47,7 +47,7 @@ namespace Hamsters
             return null;
         }
 
-        public static string FoodRendering(this Food food)
+        public static string ToDisplayString(this Food food)
         {
             switch(food)
             {

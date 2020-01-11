@@ -13,12 +13,9 @@ namespace Hamsters
     
     class Program
     {
-        public static bool EdibleFood(Food food)
+        public static bool IsEdibleFood(Food food)
         {
-            if ((food == Food.candy) || (food == Food.meat))
-                return true;
-            else
-                return false;
+            return (food == Food.candy) || (food == Food.meat);
         }
 
         static void Main(string[] args)
@@ -30,47 +27,27 @@ namespace Hamsters
             var edibilityCheck = new FoodEdibilityCheck();            
             for (int i = 0; i < hamster.Length; i++)
             {
-                edibilityCheck.FirstDayOfTheHamster(hamster[i]);                
-                /*dictionary[hamster[i]] = 0; 
-                Console.WriteLine(hamster[i].ToString());*/
-            }
-            foreach (Hamsters kvp in edibilityCheck.GetHamsters())
-            {
-                Console.WriteLine(kvp);
-            }
+                edibilityCheck.TodayEatUp(hamster[i]);   
+                Console.WriteLine(hamster[i].ToString());
+            }            
             foreach (DaysOfTheWeek deytimefood in Enum.GetValues(typeof(DaysOfTheWeek)))
             {
                 Console.WriteLine($"день недели :{deytimefood.WeekRendering()}");
-                foreach (Hamsters kvp in edibilityCheck.GetHamsters())
+                foreach (Hamsters hamsters in hamster)
                 {
-                    if(edibilityCheck.IsAlive(kvp)==true)
+                    if(edibilityCheck.IsAlive(hamsters))
                     {
                         var food = RandomFood.FoodDays();
-                        Console.WriteLine("Хомяку {0} дали {1}", kvp.Name, food.FoodRendering());
-                        if (EdibleFood(food) == true)
+                        Console.WriteLine("Хомяку {0} дали {1}", hamsters.Name, food.ToDisplayString());
+                        if (IsEdibleFood(food))
                         {
-                            edibilityCheck.HamsterDidNotEat(kvp);
-                            if (edibilityCheck.Died(kvp) == true)
-                                Console.WriteLine($"{kvp.Name} умер");                            
+                            edibilityCheck.TodayHungry(hamsters);
+                            if (edibilityCheck.IsDied(hamsters))
+                                Console.WriteLine($"{hamsters.Name} умер");                            
                         }
                         else
-                            edibilityCheck.FirstDayOfTheHamster(kvp);
+                            edibilityCheck.TodayEatUp(hamsters);
                     }
-                    /*if (dictionary[hamster[i]] < 2)
-                    {
-                        var food = RandomFood.FoodDays();
-                        Console.WriteLine("Хомяку {0} дали {1}", hamster[i].Name, food.FoodRendering());
-                        if ((food == Food.meat) || (food == Food.candy))
-                        {
-                            dictionary[hamster[i]]++;
-                            if(dictionary[hamster[i]] == 2)
-                                Console.WriteLine($"{hamster[i].Name} умер");
-                        }
-                        else
-                            dictionary[hamster[i]] = 0;
-
-                    }
-                    */
                 }
             }
             Console.ReadLine();

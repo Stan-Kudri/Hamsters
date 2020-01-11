@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enum.cs" />
+    <Compile Include="FoodEdibilityCheck.cs" />
     <Compile Include="Hamsters.cs" />
     <Compile Include="IHamsterData.cs" />
     <Compile Include="LocalizationUtil.cs" />

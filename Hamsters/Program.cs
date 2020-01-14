@@ -23,33 +23,31 @@ namespace Hamsters
             var hamsters = new Hamsters[2];
             hamsters[0] = new Hamsters("Пупа", 400, 9, Color.pink);
             hamsters[1] = new Hamsters("Трула", 500, 10, Color.white);
-            List<StatesHamster> statesHamsters = new List<StatesHamster>();
+            /*var dictionary = new Dictionary<Hamsters, int>();*/
+            var edibilityCheck = new FoodEdibilityCheck();            
             for (int i = 0; i < hamsters.Length; i++)
             {
-                statesHamsters.Add(new StatesHamster(hamsters[i]));
+                edibilityCheck.TodayEatUp(hamsters[i]);   
                 Console.WriteLine(hamsters[i].ToString());
             }            
             foreach (DaysOfTheWeek deytimefood in Enum.GetValues(typeof(DaysOfTheWeek)))
             {
                 Console.WriteLine($"день недели :{deytimefood.WeekRendering()}");
-                foreach (var hamster in statesHamsters)
+                foreach (var hamster in hamsters)
                 {
-                    if (hamster.LivingConditions)
+                    if(edibilityCheck.IsAlive(hamster))
                     {
                         var food = RandomFood.FoodDays();
-                        Console.WriteLine("Хомяку {0} дали {1}", hamster.Hamster.Name, food.ToDisplayString());
+                        Console.WriteLine("Хомяку {0} дали {1}", hamster.Name, food.ToDisplayString());
                         if (IsEdibleFood(food))
                         {
-                            if (!hamster.AteFood)
-                            {
-                                hamster.EndOfLife();
-                                Console.WriteLine($"{hamster.Hamster.Name} умер");
-                            }
-                            hamster.TodayEatDown();
+                            edibilityCheck.TodayHungry(hamster);
+                            if (edibilityCheck.IsDie(hamster))
+                                Console.WriteLine($"{hamster.Name} умер");                            
                         }
                         else
-                            hamster.TodayEatUp();
-                    }                   
+                            edibilityCheck.TodayEatUp(hamster);
+                    }
                 }
             }
             Console.ReadLine();

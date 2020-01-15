@@ -23,17 +23,16 @@ namespace Hamsters
             var hamsters = new Hamsters[2];
             hamsters[0] = new Hamsters("Пупа", 400, 9, Color.pink);
             hamsters[1] = new Hamsters("Трула", 500, 10, Color.white);
-            /*var dictionary = new Dictionary<Hamsters, int>();*/
-            var edibilityCheck = new FoodEdibilityCheck();            
+            var edibilityCheck = new FoodEdibilityCheck();
             for (int i = 0; i < hamsters.Length; i++)
             {
-                edibilityCheck.TodayEatUp(hamsters[i]);   
+                edibilityCheck.TodayEatUp(hamsters[i]);
                 Console.WriteLine(hamsters[i].ToString());
             }            
             foreach (DaysOfTheWeek deytimefood in Enum.GetValues(typeof(DaysOfTheWeek)))
             {
                 Console.WriteLine($"день недели :{deytimefood.WeekRendering()}");
-                foreach (var hamster in hamsters)
+                foreach(var hamster in hamsters)
                 {
                     if(edibilityCheck.IsAlive(hamster))
                     {

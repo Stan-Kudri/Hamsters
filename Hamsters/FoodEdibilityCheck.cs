@@ -6,17 +6,19 @@ using System.Threading.Tasks;
 
 namespace Hamsters
 {
-    class HamsterLifeState
-    {
-        public Hamsters Hamster { get; set; }
-        public int Livehamster { get; set; }
-
-    }
+    
     class FoodEdibilityCheck
     {
         private List<HamsterLifeState> list = new List <HamsterLifeState>();
-        
-        public int ListOf(Hamsters hamsters)
+
+        class HamsterLifeState
+        {
+            public Hamsters Hamster { get; set; }
+            public int Livehamster { get; set; }
+
+        }
+
+        public int IndexOf(Hamsters hamsters)
         {
             for(int i=0; i < list.Count; i++)           
                 if(list[i].Hamster==hamsters)                
@@ -26,7 +28,7 @@ namespace Hamsters
 
         public void TodayEatUp (Hamsters hamsters)
         {
-            var index = ListOf(hamsters);
+            var index = IndexOf(hamsters);
             if (index != -1)
                 list[index].Livehamster = 0;
             else
@@ -35,19 +37,19 @@ namespace Hamsters
 
         public bool IsAlive(Hamsters hamsters)
         {
-            var index = ListOf(hamsters);
+            var index = IndexOf(hamsters);
             return list[index].Livehamster < 2;                
         }
 
         public void TodayHungry (Hamsters hamsters)
         {
-            var index = ListOf(hamsters);
+            var index = IndexOf(hamsters);
             list[index].Livehamster++;
         }
 
         public bool IsDie(Hamsters hamsters)
         {
-            var index = ListOf(hamsters);
+            var index = IndexOf(hamsters);
             return list[index].Livehamster == 2;
         }                     
     }

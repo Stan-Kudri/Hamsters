@@ -16,7 +16,7 @@ namespace Hamsters
     {
         private List<HamsterLifeState> list = new List <HamsterLifeState>();
         
-        public int ListOfHamsters(Hamsters hamsters)
+        public int ListOf(Hamsters hamsters)
         {
             for(int i=0; i < list.Count; i++)           
                 if(list[i].Hamster==hamsters)                
@@ -26,7 +26,7 @@ namespace Hamsters
 
         public void TodayEatUp (Hamsters hamsters)
         {
-            var index = ListOfHamsters(hamsters);
+            var index = ListOf(hamsters);
             if (index != -1)
                 list[index].Livehamster = 0;
             else
@@ -35,19 +35,19 @@ namespace Hamsters
 
         public bool IsAlive(Hamsters hamsters)
         {
-            var index = ListOfHamsters(hamsters);
+            var index = ListOf(hamsters);
             return list[index].Livehamster < 2;                
         }
 
         public void TodayHungry (Hamsters hamsters)
         {
-            var index = ListOfHamsters(hamsters);
+            var index = ListOf(hamsters);
             list[index].Livehamster++;
         }
 
         public bool IsDie(Hamsters hamsters)
         {
-            var index = ListOfHamsters(hamsters);
+            var index = ListOf(hamsters);
             return list[index].Livehamster == 2;
         }                     
     }

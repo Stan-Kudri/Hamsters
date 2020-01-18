@@ -46,14 +46,17 @@
     <Compile Include="Enum.cs" />
     <Compile Include="FoodEdibilityCheck.cs" />
     <Compile Include="Hamsters.cs" />
-    <Compile Include="IHamsterData.cs" />
-    <Compile Include="LocalizationUtil.cs" />
+    <Compile Include="Abstraction\IHamsterData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomFood.cs" />
+    <Compile Include="Utilit\ExtensionColor.cs" />
+    <Compile Include="Utilit\ExtensionFood.cs" />
+    <Compile Include="Utilit\ExtnsionWeek.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

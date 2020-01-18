@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace Hamsters
 {
+    public enum LifeCondition
+    {
+        life,
+        dead,
+    }
+
     public enum Color
     {
         red,

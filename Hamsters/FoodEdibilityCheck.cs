@@ -11,7 +11,7 @@ namespace Hamsters
     {
         private List<HamsterLifeState> list = new List <HamsterLifeState>();
 
-        class HamsterLifeState
+        public class HamsterLifeState
         {
             public Hamsters Hamster { get; set; }
             public int Livehamster { get; set; }

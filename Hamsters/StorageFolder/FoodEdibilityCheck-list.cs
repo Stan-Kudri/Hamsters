@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hamsters
+namespace Hamsters.StorageFolder
 {
-    
-    class FoodEdibilityCheck
+    class FoodEdibilityCheck_list
     {
-        private List<HamsterLifeState> list = new List <HamsterLifeState>();
+        private List<HamsterLifeState> list = new List<HamsterLifeState>();
 
         public class HamsterLifeState
         {
@@ -20,13 +19,13 @@ namespace Hamsters
 
         public int IndexOf(Hamsters hamsters)
         {
-            for(int i=0; i < list.Count; i++)           
-                if(list[i].Hamster==hamsters)                
-                    return i;            
+            for (int i = 0; i < list.Count; i++)
+                if (list[i].Hamster == hamsters)
+                    return i;
             return -1;
         }
 
-        public void TodayEatUp (Hamsters hamsters)
+        public void TodayEatUp(Hamsters hamsters)
         {
             var index = IndexOf(hamsters);
             if (index != -1)
@@ -38,10 +37,10 @@ namespace Hamsters
         public bool IsAlive(Hamsters hamsters)
         {
             var index = IndexOf(hamsters);
-            return list[index].Livehamster < 2;                
+            return list[index].Livehamster < 2;
         }
 
-        public void TodayHungry (Hamsters hamsters)
+        public void TodayHungry(Hamsters hamsters)
         {
             var index = IndexOf(hamsters);
             list[index].Livehamster++;
@@ -51,6 +50,6 @@ namespace Hamsters
         {
             var index = IndexOf(hamsters);
             return list[index].Livehamster == 2;
-        }                     
+        }
     }
 }

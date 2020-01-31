@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Hamsters.Abstraction;
 
 namespace Hamsters.StorageFolder
 {
-    class FoodEdibilityCheck_dictionary: IFoodEdibilityCheck
+    class FoodEdibilityCheck_dictionary
     {
         private Dictionary<Hamsters, int> dictionary = new Dictionary<Hamsters, int>();
 

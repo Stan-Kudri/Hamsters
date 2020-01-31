@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstraction\IFoodEdibilityCheck.cs" />
     <Compile Include="Enum.cs" />
     <Compile Include="Hamsters.cs" />
     <Compile Include="Abstraction\IHamsterData.cs" />

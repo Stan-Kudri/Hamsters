@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Hamsters.Utilit;
 using Hamsters.StorageFolder;
+using Hamsters.Abstraction;
 
 namespace Hamsters
 {
@@ -15,7 +16,7 @@ namespace Hamsters
 
     class Program
     {
-        private static void FeedHamster(FoodEdibilityCheck_list edibilityCheck)
+        private static void FeedHamster(IFoodEdibilityCheck edibilityCheck)
         {
             var hamsters = new Hamsters[]
             {
